@@ -39,7 +39,7 @@
                                 <div class="cont">
                                     <h3>{{ $home_banner->title_en }}</h3>
                                     <div class="features"><span><i class="omfi-door"></i> Manufacturer:</span>
-                                        <p>{{ $home_banner->manufacturer }}</p>
+                                        <p>{{ $home_banner->Brand->name_en }}</p>
                                     </div>
                                     <div class="features"><span><i class="omfi-passengers"></i> Engine Size (cc):</span>
                                         <p>{{ $home_banner->engine }}</p>
@@ -100,7 +100,6 @@
                     <div class="search">
                         <form>
                             <input type="text" name="search" placeholder="Search ...">
-
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -110,6 +109,7 @@
                             <div class="filter-radio-group">
                                 <div class="form-group">
                                     <select name="manufacture" id="brandSelect" class="form-control">
+                                        <option value="">Select Manufacture</option>
                                         @foreach ($brands as $brand )
                                         <option value="{{ $brand->id }}">{{ $brand->name_en }}</option>
                                         @endforeach
@@ -130,7 +130,7 @@
                             <div class="filter-radio-group">
                                 <div class="form-group">
                                     <select name="year" class="form-control">
-                                        <option value="">Year</option>
+                                        <option value="">Select Year</option>
                                         <option value="2023">2023</option>
                                         <option value="2022">2022</option>
                                         <option value="2021">2021</option>
@@ -170,7 +170,7 @@
                             <div class="subscribe-form">
                                   <div class="form-group">
                                     <button type="submit" class="theme-btn subscribe-btn">
-                                      Subscribe
+                                      Submit
                                     </button>
                                   </div>
                               </div>

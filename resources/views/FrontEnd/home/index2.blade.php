@@ -405,7 +405,11 @@
                 <div class="cont">
                   <h3>{{ $home_banner->title_en }}</h3>
                   <div class="features"><span><i class="omfi-door"></i> Manufacturer:</span>
-                    <p>{{ $home_banner->manufacturer }}</p>
+                    @if ($home_banner->manufacturer != Null)
+                    <p>{{ $home_banner->Brand->name_en }}</p>
+                    @else
+                    <p></p>
+                    @endif
                   </div>
                   <div class="features"><span><i class="omfi-passengers"></i> Engine Size (cc):</span>
                     <p>{{ $home_banner->engine }}</p>

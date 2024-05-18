@@ -14,4 +14,9 @@ class Banner extends Model
     {
         return $this->belongsTo(Carm::class, 'model');
     }
+
+    public function Brand()
+    {
+        return $this->belongsTo(Brand::class, 'manufacturer');
+    }
 }

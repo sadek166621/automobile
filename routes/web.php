@@ -97,6 +97,8 @@ Route::get('/contact-us',[FrontendController::class, 'pageContact'])->name('page
 Route::get('/car-details/{id}',[FrontendController::class, 'cardetails'])->name('car-details');
 Route::get('/about-us',[FrontendController::class, 'pageAbout'])->name('page.about');
 Route::get('/find-a-car',[FrontendController::class, 'findacar'])->name('find-a-car');
+Route::get('/our-customers',[FrontendController::class, 'ourcustomers'])->name('our-customers');
+Route::get('/accessories',[FrontendController::class, 'accessories'])->name('accessories');
 Route::get('/terms-and-conditions',[FrontendController::class, 'pageTerms'])->name('page.terms');
 Route::get('/privacy-policy',[FrontendController::class, 'pagePolicy'])->name('page.policy');
 Route::get('/faq',[FrontendController::class, 'pageFaq'])->name('page.faq');

@@ -36,18 +36,18 @@
 		                          <label for="title" class="col-form-label" style="font-weight: bold;"> Title:</label>
 		                            <input class="form-control" id="title" type="text" name="title" placeholder="Write page title" value="{{old('title')}}">
 		                        </div> --}}
-                                <h2> FAQs</h2>
+                                {{-- <h2> FAQs</h2>
 		                        <div class="mb-4">
 		                          <label for="description_en" class="col-form-label" style="font-weight: bold;">Description:</label>
 		                            <textarea name="faq" cols="5" placeholder="Write page description english" class="form-control summernote">{{ $page->faq }}</textarea>
 		                            @error('description_en')
 	                                    <p class="text-danger">{{$message}}</p>
 	                                @enderror
-		                        </div>
-		                        <div class="mb-4 d-none">
+		                        </div> --}}
+		                        {{-- <div class="mb-4 d-none">
 		                          	<label for="description_bn" class="col-form-label" style="font-weight: bold;">Description (Bangla):</label>
 		                            <textarea name="faq_bn" id="description_bn" cols="5" placeholder="Write page description bangla" class="form-control summernote">{{ $page->faq_bn }}</textarea>
-		                        </div>
+		                        </div> --}}
                                 <h2> About </h2>
 		                        <div class="mb-4">
 		                          <label for="description_en" class="col-form-label" style="font-weight: bold;">Description:</label>
@@ -56,11 +56,11 @@
 	                                    <p class="text-danger">{{$message}}</p>
 	                                @enderror
 		                        </div>
-		                        <div class="mb-4 d-none">
+		                        {{-- <div class="mb-4 d-none">
 		                          	<label for="description_bn" class="col-form-label" style="font-weight: bold;">Description (Bangla):</label>
 		                            <textarea name="about_bn" id="description_bn" cols="5" placeholder="Write page description bangla" class="form-control summernote">{{ $page->about_bn }}</textarea>
-		                        </div>
-                                <h2> Privacy-Policy </h2>
+		                        </div> --}}
+                                {{-- <h2> Privacy-Policy </h2>
 		                        <div class="mb-4">
 		                          <label for="description_en" class="col-form-label" style="font-weight: bold;">Description:</label>
 		                            <textarea name="privacy" id="description_en" cols="5" placeholder="Write page description english" class="form-control summernote">{{ $page->privacy }}</textarea>
@@ -71,9 +71,9 @@
 		                        <div class="mb-4 d-none">
 		                          	<label for="description_bn" class="col-form-label" style="font-weight: bold;">Description (Bangla):</label>
 		                            <textarea name="privacy_bn" id="description_bn" cols="5" placeholder="Write page description bangla" class="form-control summernote">{{ $page->privacy_bn }}</textarea>
-		                        </div>
+		                        </div> --}}
 
-                                <h2> Terms & Condition </h2>
+                                {{-- <h2> Terms & Condition </h2>
 		                        <div class="mb-4">
 		                          <label for="description_en" class="col-form-label" style="font-weight: bold;">Description:</label>
 		                            <textarea name="terms" id="description_en" cols="5" placeholder="Write page description english" class="form-control summernote">{{ $page->terms }}</textarea>
@@ -84,9 +84,9 @@
 		                        <div class="mb-4 d-none">
 		                          	<label for="description_bn" class="col-form-label" style="font-weight: bold;">Description (Bangla):</label>
 		                            <textarea name="terms_bn" id="description_bn" cols="5" placeholder="Write page description bangla" class="form-control summernote">{{ $page->terms_bn }}</textarea>
-		                        </div>
+		                        </div> --}}
 
-                                <h2> Help </h2>
+                                {{-- <h2> Help </h2>
 		                        <div class="mb-4">
 		                          <label for="description_en" class="col-form-label" style="font-weight: bold;">Description:</label>
 		                            <textarea name="help" id="description_en" cols="5" placeholder="Write page description english" class="form-control summernote">{{ $page->help}}</textarea>
@@ -97,7 +97,7 @@
 		                        <div class="mb-4 d-none">
 		                          	<label for="description_bn" class="col-form-label" style="font-weight: bold;">Description (Bangla):</label>
 		                            <textarea name="help_bn" id="description_bn" cols="5" placeholder="Write page description bangla" class="form-control summernote">{{ $page->help_bn }}</textarea>
-		                        </div>
+		                        </div> --}}
 
 		                        <div class="row mb-4 justify-content-sm-end">
 									<div class="col-lg-3 col-md-4 col-sm-5 col-6">

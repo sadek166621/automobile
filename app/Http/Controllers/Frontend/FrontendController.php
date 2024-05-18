@@ -200,6 +200,8 @@ class FrontendController extends Controller
         return response()->json(['products' => $products, 'nextOffset' => $nextOffset]);
     }
     public function findacar(){
+
+
         $cars = Banner::orderBy('id','desc');
 
        if(isset($_GET['manufacture']) && $_GET['manufacture']>0){
@@ -213,6 +215,10 @@ class FrontendController extends Controller
        }
        if(isset($_GET['fuel_type']) && $_GET['fuel_type']>0){
          $cars = $cars->where('fuel_type', $_GET['fuel_type']);
+       }
+
+       if(isset($_GET['search']) && $_GET['search']>0){
+         $cars = $cars->where('title_en', 'LIKE', "%{$_GET['search']}%");
        }
 
     $data['cars'] = $cars->paginate(9);
@@ -620,6 +626,15 @@ protected function getShippingCharge($shipping_id)
     public function pageAbout(){
         $page = Page::first();
         return view('FrontEnd.about_us.index', compact('page'));
+     }
+
+     public function ourcustomers(){
+        return view('FrontEnd.our-customers.index');
+
+     }
+
+     public function accessories(){
+        return view('FrontEnd.accessories.index');
      }
 
     public function loginCheck()

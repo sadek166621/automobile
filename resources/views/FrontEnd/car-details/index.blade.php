@@ -14,7 +14,7 @@
       <div class="auto-container">
         <h1>Details</h1>
         <ul class="page-breadcrumb">
-          <li><a href="index.html">home</a></li>
+          <li><a href="{{ route('home') }}">home</a></li>
           <li>Car Information</li>
         </ul>
       </div>
@@ -77,7 +77,18 @@
                 <h6>Car Information</h6>
               </div>
               <div class="features"><span><i class="omfi-door"></i> Manufacturer:</span>
-                <p>{{ $cars->manufacturer }}</p>
+                @if ( $cars->manufacturer != NUll)
+                <p>{{ $cars->Brand->name_en }}</p>
+                @else
+                <p></p>
+                @endif
+              </div>
+              <div class="features"><span><i class="omfi-door"></i> Model:</span>
+                @if ($cars->model != Null)
+                <p>{{ $cars->models->name }}</p>
+                @else
+                <p></p>
+                @endif
               </div>
               <div class="features"><span><i class="omfi-passengers"></i> Year of Manufacturer:</span>
                 <p>{{ $cars->year_of_manufacturer }}</p>

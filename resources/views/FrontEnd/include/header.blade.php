@@ -33,10 +33,13 @@
                     <a href="index.html">Home</a>
                   </li>
                   <li>
-                    <a href="#">About Us</a>
+                    <a href="{{ route('page.about') }}">About Us</a>
                   </li>
                   <li>
                     <a href="{{ route('find-a-car') }}">Find A Car</a>
+                  </li>
+                  <li>
+                    <a href="{{ route('our-customers') }}">Our Customers</a>
                   </li>
                   <!-- <li>
                     <a href="#">EMI Calculation</a>
