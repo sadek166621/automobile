@@ -24,6 +24,7 @@ class CartController extends Controller
     /* ============ Start AddToCart Methoed ============ */
       public function AddToCart(Request $request, $id){
 //        dd($request->all());
+            // return response()->json($request);
         $options = json_decode(stripslashes($request->get('options')));
 
         //dd($request);

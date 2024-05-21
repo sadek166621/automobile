@@ -38,14 +38,15 @@ class CheckoutController extends Controller
         // if(!guest_checkout() && !auth()->check()){
         //     return redirect()->route('login');
         // }
+        // dd('ok');
         $addresses = Address::where('status', 1)->get();
         $shippings = Shipping::where('status', 1)->get();
 
         $carts = Cart::content();
-        if(count($carts) == 0){
-//            return back()->with('message', 'Cart is Empty!!');
-            return redirect()->route('cart.show');
-        }
+//         if(count($carts) == 0){
+// //            return back()->with('message', 'Cart is Empty!!');
+//             return redirect()->route('cart.show');
+//         }
 
         $cartTotal = Cart::total();
 //        if(Auth::user() && Auth::user()->role == 3){
@@ -121,7 +122,7 @@ class CheckoutController extends Controller
             'email' => 'nullable|email|max:191',
             'phone' => ['required','regex:/(\+){0,1}(88){0,1}01(3|4|5|6|7|8|9)(\d){8}/','min:11','max:15'],
             'address' => 'required|max:10000',
-            'payment_option'=>'required',
+            // 'payment_option'=>'required',
             'comment' => 'nullable|max:2000',
         ]);
         // dd(Cart::total()+$request->total_amount);
@@ -394,7 +395,8 @@ class CheckoutController extends Controller
     // }
 
     public function payment(Request $request){
-        //dd($request->payment_option);
+        // dd($request->payment_option);
+        // dd($request);
 
         if($request->payment_option == 'cod'){
             $checkout = new CheckoutController;

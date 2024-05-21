@@ -627,14 +627,23 @@ protected function getShippingCharge($shipping_id)
         $page = Page::first();
         return view('FrontEnd.about_us.index', compact('page'));
      }
-
+     public function servicebeforesale(){
+        return view('FrontEnd.service.service-before-sale');
+     }
      public function ourcustomers(){
         return view('FrontEnd.our-customers.index');
 
      }
+     public function loanhelp(){
+        return view('FrontEnd.car-load.loan-help');
+    }
 
+     public function loancal(){
+        return view('FrontEnd.car-load.loan-cal');
+    }
      public function accessories(){
-        return view('FrontEnd.accessories.index');
+        $data['products'] = Product::orderBy('name_en')->where('status','=',1)->latest()->get();
+        return view('FrontEnd.accessories.index',$data);
      }
 
     public function loginCheck()

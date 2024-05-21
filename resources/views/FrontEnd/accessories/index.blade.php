@@ -17,7 +17,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 317px;
+    width: 558px;
     margin: 0 auto;
 
 }
@@ -63,10 +63,10 @@
       </div>
 
       <div class="page-wid">
-        <h1>Accessories</h1>
+        <h1>Service After Sales</h1>
         <ul class="page-breadcrumb">
           <li><a href="{{ route('home') }}">home</a></li>
-          <li>Accessories</li>
+          <li>Service After Sales</li>
         </ul>
       </div>
     </div>
@@ -82,143 +82,33 @@
             A moving object always require a regular maintenance service. Better the maintenance services, longer the durability of the vehicle. We offer some maintenance kits which you need on regular interval. Please buy these genuine maintenance kits at competitive price from us. We have some nominated workshops to ensure best maintenance services. Please contact us for services.
             </p>
       <div class="row car-list">
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="items">
-            <figure>
-                <a href=""><img src="{{asset('FrontEnd')}}/assets/images/car/7.jpg" alt="" class="img-fluid"></a>
-            </figure>
-            <div class="content">
-              <div class="cont">
-                <a href="">
-                    <h3>Lamborghini Urus</h3>
-                </a>
-
-                <div class="book mt-3">
-                  <div>
-                    <div class="price">BDT 2,650,000</div>
-                  </div>
-                  <button type="submit" class="button-4">
-                    <strong><i class="fa fa-shopping-cart"></i> Buy Now</strong>
-                </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @foreach ($products as $product )
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="items">
               <figure>
-                  <a href=""><img src="{{asset('FrontEnd')}}/assets/images/car/7.jpg" alt="" class="img-fluid"></a>
+                  <a href="{{ route('product.details',$product->slug) }}"><img src="{{ asset($product->product_thumbnail) }}" alt="" class="img-fluid"></a>
               </figure>
               <div class="content">
                 <div class="cont">
                   <a href="">
-                      <h3>Lamborghini Urus</h3>
+                      <h3>{{ $product->name_en }}</h3>
                   </a>
-
                   <div class="book mt-3">
                     <div>
-                      <div class="price">BDT 2,650,000</div>
+                      <div class="price">BDT {{ $product->regular_price ?? 'NULL' }}</div>
                     </div>
-                    <button type="submit" class="button-4">
-                      <strong><i class="fa fa-shopping-cart"></i> Buy Now</strong>
+                    <button class="button-4 buy_now" type="submit" onclick="buyNow({{ $product->id }})"><strong><i class="fa fa-shopping-cart"></i> Buy Now</strong>
+                        <input type="hidden" id="pfrom" value="direct">
+                        <input type="hidden" id="product_product_id" value="{{ $product->id }}" min="1">
+                        <input type="hidden" id="{{ $product->id }}-product_pname"
+                               value="{{ $product->name_en }}">
                   </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="items">
-              <figure>
-                  <a href=""><img src="{{asset('FrontEnd')}}/assets/images/car/7.jpg" alt="" class="img-fluid"></a>
-              </figure>
-              <div class="content">
-                <div class="cont">
-                  <a href="">
-                      <h3>Lamborghini Urus</h3>
-                  </a>
-
-                  <div class="book mt-3">
-                    <div>
-                      <div class="price">BDT 2,650,000</div>
-                    </div>
-                    <button type="submit" class="button-4">
-                      <strong><i class="fa fa-shopping-cart"></i> Buy Now</strong>
-                  </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="items">
-              <figure>
-                  <a href=""><img src="{{asset('FrontEnd')}}/assets/images/car/7.jpg" alt="" class="img-fluid"></a>
-              </figure>
-              <div class="content">
-                <div class="cont">
-                  <a href="">
-                      <h3>Lamborghini Urus</h3>
-                  </a>
-
-                  <div class="book mt-3">
-                    <div>
-                      <div class="price">BDT 2,650,000</div>
-                    </div>
-                    <button type="submit" class="button-4">
-                      <strong><i class="fa fa-shopping-cart"></i> Buy Now</strong>
-                  </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="items">
-              <figure>
-                  <a href=""><img src="{{asset('FrontEnd')}}/assets/images/car/7.jpg" alt="" class="img-fluid"></a>
-              </figure>
-              <div class="content">
-                <div class="cont">
-                  <a href="">
-                      <h3>Lamborghini Urus</h3>
-                  </a>
-                  <div class="book mt-3">
-                    <div>
-                      <div class="price">BDT 2,650,000</div>
-                    </div>
-                    <button type="submit" class="button-4">
-                      <strong><i class="fa fa-shopping-cart"></i> Buy Now</strong>
-                  </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="items">
-              <figure>
-                  <a href=""><img src="{{asset('FrontEnd')}}/assets/images/car/7.jpg" alt="" class="img-fluid"></a>
-              </figure>
-              <div class="content">
-                <div class="cont">
-                  <a href="">
-                      <h3>Lamborghini Urus</h3>
-                  </a>
-
-                  <div class="book mt-3">
-                    <div>
-                      <div class="price">BDT 2,650,000</div>
-                    </div>
-                    <button type="submit" class="button-4">
-                      <strong><i class="fa fa-shopping-cart"></i> Buy Now</strong>
-                  </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        @endforeach
       </div>
     </div>
   </section>
@@ -257,3 +147,85 @@
     </div>
   </section>
 @endsection
+@push('js')
+<script>
+     function buyNow(id, qty=0) {
+                // alert();
+    addToCartDirect(id, true, qty);
+}
+    function addToCartDirect(id, redirectToCheckout, qty=null) {
+
+    var product_name = $('#' + id + '-product_pname').val();
+    var quantity = 1;
+    if(qty > 1){
+        quantity = qty;
+    }
+        // var options = $('#choice_form').serializeArray();
+        // var jsonString = JSON.stringify(options);
+        // console.log(options);
+        // console.log(id, redirectToCheckout, qty)
+        // var product_name = $('#pname').val();
+        // var id = $('#product_id').val();
+        // var price = $('#product_price').val();
+        // var color = $('#color option:selected').val();
+        // var size = $('#size option:selected').val();
+        // var quantity = $('#qty').val();
+        // var varient = $('#pvarient').val();
+    $.ajax({
+        type: 'POST',
+        url: '/cart/data/store/'+id,
+        dataType: 'json',
+        data: {
+
+            // color: color,
+            // size: size,
+            // product_price: price,
+            // product_varient: varient,
+            // options: jsonString,
+
+            quantity: quantity,
+            product_name: product_name,
+            _token: "{{ csrf_token() }}",
+        },
+        success: function (data) {
+            console.log(data);
+
+            // if ($.isEmptyObject(data.error)) {
+            //     const Toast = Swal.mixin({
+            //         toast: true,
+            //         position: 'top-end',
+            //         icon: 'success',
+            //         showConfirmButton: false,
+            //         timer: 1200
+            //     });
+            //     Toast.fire({
+            //         type: 'success',
+            //         title: data.success
+            //     });
+
+                console.log(redirectToCheckout);
+
+                if (redirectToCheckout) {
+                    // Redirect to the checkout page
+                    console.log(redirectToCheckout);
+                    window.location.href = '/checkout';
+                }
+            // } else {
+            //     const Toast = Swal.mixin({
+            //         toast: true,
+            //         position: 'top-end',
+            //         icon: 'error',
+            //         showConfirmButton: false,
+            //         timer: 1200
+            //     });
+            //     Toast.fire({
+            //         type: 'error',
+            //         title: data.error
+            //     });
+            // }
+        }
+    });
+}
+</script>
+
+@endpush

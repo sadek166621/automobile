@@ -68,10 +68,10 @@
 
 
                 <img src="{{asset('FrontEnd')}}/assets/images/resource/team-1.jpg" alt="" />
-                <div class="overlay-box">
+                {{-- <div class="overlay-box">
                   <h3><a href="team-detail.html">Luiz Hector</a></h3>
                   <div class="designation">CEO of Carsore</div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@
               <span class="triangle-two"></span>
               <div class="image">
                 <!-- Social Box -->
-                <ul class="social-box">
+                {{-- <ul class="social-box">
                   <li>
                     <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
                   </li>
@@ -96,13 +96,13 @@
                   <li>
                     <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
                   </li>
-                </ul>
+                </ul> --}}
 
                 <img src="{{asset('FrontEnd')}}/assets/images/resource/team-2.jpg" alt="" />
-                <div class="overlay-box">
+                {{-- <div class="overlay-box">
                   <h3><a href="team-detail.html">Luiz Hector</a></h3>
                   <div class="designation">CEO of Carsore</div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@
               <span class="triangle-two"></span>
               <div class="image">
                 <!-- Social Box -->
-                <ul class="social-box">
+                {{-- <ul class="social-box">
                   <li>
                     <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
                   </li>
@@ -127,13 +127,13 @@
                   <li>
                     <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
                   </li>
-                </ul>
+                </ul> --}}
 
                 <img src="{{asset('FrontEnd')}}/assets/images/resource/team-3.jpg" alt="" />
-                <div class="overlay-box">
+                {{-- <div class="overlay-box">
                   <h3><a href="team-detail.html">Luiz Hector</a></h3>
                   <div class="designation">CEO of Carsore</div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@
               <span class="triangle-two"></span>
               <div class="image">
                 <!-- Social Box -->
-                <ul class="social-box">
+                {{-- <ul class="social-box">
                   <li>
                     <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
                   </li>
@@ -158,13 +158,13 @@
                   <li>
                     <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
                   </li>
-                </ul>
+                </ul> --}}
 
                 <img src="{{asset('FrontEnd')}}/assets/images/resource/team-3.jpg" alt="" />
-                <div class="overlay-box">
+                {{-- <div class="overlay-box">
                   <h3><a href="team-detail.html">Luiz Hector</a></h3>
                   <div class="designation">CEO of Carsore</div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -176,7 +176,7 @@
               <span class="triangle-two"></span>
               <div class="image">
                 <!-- Social Box -->
-                <ul class="social-box">
+                {{-- <ul class="social-box">
                   <li>
                     <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
                   </li>
@@ -189,13 +189,13 @@
                   <li>
                     <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
                   </li>
-                </ul>
+                </ul> --}}
 
                 <img src="{{asset('FrontEnd')}}/assets/images/resource/team-1.jpg" alt="" />
-                <div class="overlay-box">
+                {{-- <div class="overlay-box">
                   <h3><a href="team-detail.html">Luiz Hector</a></h3>
                   <div class="designation">CEO of Carsore</div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@
               <span class="triangle-two"></span>
               <div class="image">
                 <!-- Social Box -->
-                <ul class="social-box">
+                {{-- <ul class="social-box">
                   <li>
                     <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
                   </li>
@@ -220,13 +220,13 @@
                   <li>
                     <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
                   </li>
-                </ul>
+                </ul> --}}
 
                 <img src="{{asset('FrontEnd')}}/assets/images/resource/team-2.jpg" alt="" />
-                <div class="overlay-box">
+                {{-- <div class="overlay-box">
                   <h3><a href="team-detail.html">Luiz Hector</a></h3>
                   <div class="designation">CEO of Carsore</div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>

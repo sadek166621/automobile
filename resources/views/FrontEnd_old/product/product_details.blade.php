@@ -95,8 +95,6 @@
                         @if($discount['discount'] != $product->regular_price)
                             <del  class="old-price {{$discount['discount'] == 0 ? 'd-none':''}}" style="color: grey"> ৳{{$product->regular_price}}</del>
                         @endif
-
-
                     </h4>
                     <p class="">
                         <small>

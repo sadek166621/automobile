@@ -99,6 +99,10 @@ Route::get('/about-us',[FrontendController::class, 'pageAbout'])->name('page.abo
 Route::get('/find-a-car',[FrontendController::class, 'findacar'])->name('find-a-car');
 Route::get('/our-customers',[FrontendController::class, 'ourcustomers'])->name('our-customers');
 Route::get('/accessories',[FrontendController::class, 'accessories'])->name('accessories');
+Route::get('/service-before-sale',[FrontendController::class, 'servicebeforesale'])->name('service-before-sale');
+Route::get('/loan-help',[FrontendController::class, 'loanhelp'])->name('loan-help');
+Route::get('/loan-cal',[FrontendController::class, 'loancal'])->name('loan-cal');
+// Route::get('/loan-cal',[FrontendController::class, 'loancal'])->name('loan-cal');
 Route::get('/terms-and-conditions',[FrontendController::class, 'pageTerms'])->name('page.terms');
 Route::get('/privacy-policy',[FrontendController::class, 'pagePolicy'])->name('page.policy');
 Route::get('/faq',[FrontendController::class, 'pageFaq'])->name('page.faq');

@@ -30,7 +30,7 @@
               <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                 <ul class="navigation clearfix">
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                   </li>
                   <li>
                     <a href="{{ route('page.about') }}">About Us</a>
@@ -41,13 +41,17 @@
                   <li>
                     <a href="{{ route('our-customers') }}">Our Customers</a>
                   </li>
+                  <li>
+                    <a href="{{ route('accessories') }}">Service After Sales</a>
+                  </li>
+                  <li>
+                    <a href="{{ route('service-before-sale') }}">Service Before Sales</a>
+                  </li>
                   <!-- <li>
                     <a href="#">EMI Calculation</a>
                   </li> -->
-                  <li>
-                    <a href="#">Accessories</a>
-                  </li>
-                  <li class="dropdown">
+
+                  {{-- <li class="dropdown">
                     <a href="#">Services</a>
                     <ul>
                       <li><a href="#">Pre Order</a></li>
@@ -55,13 +59,13 @@
                         <a href="#">Consultation</a>
                       </li>
                     </ul>
-                  </li>
+                  </li> --}}
                   <li class="dropdown">
-                    <a href="#">Car Loan</a>
+                    <a href="">Car Loan</a>
                     <ul>
-                      <li><a href="#">Loan Help</a></li>
+                      <li><a href="{{ route('loan-help') }}">Loan Help</a></li>
                       <li>
-                        <a href="#">Loan Calculator</a>
+                        <a href="{{ route('loan-cal') }}">Loan Calculator</a>
                       </li>
                     </ul>
                   </li>
@@ -82,7 +86,7 @@
                       <li><a href="not-found.html">Not Found</a></li>
                     </ul>
                   </li> -->
-                  <li><a href="#">Contact us</a></li>
+                  {{-- <li><a href="#">Contact us</a></li> --}}
                 </ul>
               </div>
             </nav>
