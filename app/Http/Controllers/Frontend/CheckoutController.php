@@ -118,12 +118,12 @@ class CheckoutController extends Controller
     {
         // dd($request);
         $data = $request->validate([
-            'name' => 'required|max:191',
-            'email' => 'nullable|email|max:191',
-            'phone' => ['required','regex:/(\+){0,1}(88){0,1}01(3|4|5|6|7|8|9)(\d){8}/','min:11','max:15'],
-            'address' => 'required|max:10000',
+            // 'name' => 'required|max:191',
+            // 'email' => 'nullable|email|max:191',
+            // 'phone' => ['required','regex:/(\+){0,1}(88){0,1}01(3|4|5|6|7|8|9)(\d){8}/','min:11','max:15'],
+            // 'address' => 'required|max:10000',
             // 'payment_option'=>'required',
-            'comment' => 'nullable|max:2000',
+            // 'comment' => 'nullable|max:2000',
         ]);
         // dd(Cart::total()+$request->total_amount);
         // dd($request->total_amount);

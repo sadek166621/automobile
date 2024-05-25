@@ -35,7 +35,7 @@
 					</div>
 		        	<div class="card-body">
 		        		<div class="row">
-		                	<div class="col-md-6 mb-4">
+		                	<div class="col-md-12 mb-4">
 		                        <label for="product_name_en" class="col-form-label" style="font-weight: bold;">Product Name:</label><span class="text-danger">*</span>
 		                        <input class="form-control" id="product_name_en" type="text" name="name_en" placeholder="Write product name english" value="{{ $product->name_en }}" required>
 		                        @error('product_name_en')
@@ -46,14 +46,14 @@
 	                           	<label for="product_name_bn" class="col-form-label" style="font-weight: bold;">Product Name (Bn):</label>
 	                           	<input class="form-control" id="product_name_bn" type="text" name="name_bn" placeholder="Write product name bangla" value="{{ $product->name_bn }}">
 		                    </div>
-                            <div class="col-md-6 mb-4">
+                            <div class="col-md-6 mb-4 d-none">
                                 <label for="product_category" class="col-form-label" style="font-weight: bold;">Category:</label><span class="text-danger">*</span>
                                 {{-- <a style="background-color: #365486; " class="btn btn-sm float-end" data-bs-toggle="modal" data-bs-target="#category"><i class="fa-solid fa-plus text-white"></i></a> --}}
                                 @php
                                     $selectedCategory = $product->category_id;
                                 @endphp
                                 <div class="custom_select">
-                                    <select class="form-control select-active w-100 form-select select-nice" name="category_id" id="product_category" required>
+                                    <select class="form-control select-active w-100 form-select select-nice" name="category_id" id="product_category" >
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" @if($category->id==$selectedCategory) selected  @endif>{{ $category->name_en }}</option>
                                             @foreach ($category->childrenCategories as $childCategory)
@@ -100,7 +100,7 @@
                                 {{--							@if ($product->brand_id == Null)--}}
 
                                 {{--                            @else--}}
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-12 mb-4">
                                     <a style="background-color: #365486; " type="button" class="btn btn-sm float-end" id="closeModal1" data-bs-toggle="modal" data-bs-target="#brand"><i class="fa-solid fa-plus text-white"></i></a>
                                     <label for="brand_id" class="col-form-label" style="font-weight: bold;">Brand:</label>
                                     <div class="custom_select">
@@ -144,7 +144,7 @@
                                 {{--	                        @if ($product->supplier_id == '0')--}}
 
                                 {{--                            @else--}}
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-6 mb-4 d-none">
                                     <label for="supplier_id" class="col-form-label" style="font-weight: bold;">Supplier:</label>
                                     <div class="custom_select">
                                         <select class="form-control select-active w-100 form-select select-nice" name="supplier_id" id="supplier_id">
@@ -235,7 +235,7 @@
 		        	</div>
 		        </div>
                 @else
-                    <div class="card">
+                    <div class="card d-none">
 					<div class="card-header" style="background-color: #fff !important;">
 						<h3 style="color: #4f5d77 !important">Product Variation</h3>
 					</div>
@@ -256,7 +256,6 @@
                                     </select>
                                 </div>
 	                        </div>
-
 	                        <div class="col-md-12 mb-4">
 	                        	<div class="customer_choice_options" id="customer_choice_options">
 	                        		<div class="mb-4">
@@ -338,11 +337,11 @@
 		        		<!-- Row //-->
 		        		<div class="row">
 
-	                        <div class="col-md-6 mb-4">
+	                        <div class="col-md-6 mb-4 d-none">
 	                          	<label for="discount_price" class="col-form-label" style="font-weight: bold;">Discount Price:</label><span class="text-danger">*</span>
-	                            <input class="form-control" id="discount_price" type="number" name="discount_price" value="{{ $product->discount_price }}" min="0" placeholder="Write product discount value" required>
+	                            <input class="form-control" id="discount_price" type="number" name="discount_price" value="{{ $product->discount_price }}" min="0" placeholder="Write product discount value">
 	                        </div>
-	                        <div class="col-md-6 mb-4">
+	                        <div class="col-md-6 mb-4 d-none">
 	                         	<label for="discount_type" class="col-form-label" style="font-weight: bold;">Discount Type: </label>
 				                <div class="custom_select">
                                     <select class="form-control select-active w-100 form-select select-nice" name="discount_type" id="discount_type">
@@ -423,7 +422,7 @@
 
 
 
-		        <div class="card">
+		        <div class="card d-none">
 		        	<div class="card-header" style="background-color: #fff !important;">
 						<h3 style="color: #4f5d77 !important">Short Description</h3>
 					</div>
@@ -432,7 +431,7 @@
 		        			<!-- Description Start -->
 	                        <div class="col-md-12 mb-4">
 	                          	<label for="long_descp_en" class="col-form-label" style="font-weight: bold;">Description: </label><span class="text-danger">*</span>
-	                            <textarea name="short_description_en" rows="2" cols="2" class="form-control summernote" placeholder="Write Short Description English" required>{{ $product->short_description_en }}</textarea>
+	                            <textarea name="short_description_en" rows="2" cols="2" class="form-control summernote" placeholder="Write Short Description English" >{{ $product->short_description_en }}</textarea>
 	                        </div>
 	                        <div class="col-md-6 mb-4 d-none">
 	                          	<label for="long_descp_bn" class="col-form-label" style="font-weight: bold;">Description (Bn): </label>
@@ -444,7 +443,7 @@
 		        </div>
 		        <div class="card">
 		        	<div class="card-header" style="background-color: #fff !important;">
-						<h3 style="color: #4f5d77 !important">Detailed Description</h3>
+						<h3 style="color: #4f5d77 !important"> Description</h3>
 					</div>
 		        	<div class="card-body">
 		        		<div class="row">
@@ -519,13 +518,13 @@
                                     <label class="form-check-label cursor" for="is_digital">Digital</label>
                                 </div>
                           	</div>
-                            <div class="row">
+                            <div class="row d-none">
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="form-check-input me-2 cursor" name="is_featured" id="is_featured" {{ $product->is_featured == 1 ? 'checked': '' }} value="1">
                                     <label class="form-check-label cursor" for="is_featured">Featured</label>
                                 </div>
                             </div>
-                          	<div class="row">
+                          	<div class="row d-none">
                           		<div class="custom-control custom-switch">
                                     <input type="checkbox" class="form-check-input me-2 cursor" name="is_replaceable" id="is_replaceable" {{ $product->is_replaceable == 1 ? 'checked': '' }} value="1">
                                     <label class="form-check-label cursor" for="is_featured">Replaceable</label>

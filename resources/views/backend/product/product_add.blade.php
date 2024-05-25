@@ -31,7 +31,6 @@
         <div class="col-md-10 mx-auto">
 			<form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
 				@csrf
-
 				<div class="card">
 					<div class="card-header">
 						<h3>Basic Info</h3>
@@ -40,7 +39,7 @@
                         <div class="row ">
                             <div class="col-md-12 mb-4 d-none">
                                 <label for="product_type" class="col-form-label" style="font-weight: bold;">Product Type:</label>
-                                <select class="form-control" id="product_type" name="product_type" onchange="toggleProductFields()" required>
+                                <select class="form-control" id="product_type" name="product_type" onchange="toggleProductFields()" >
                                     <option value="1">Single Product</option>
                                     <option value="2">Group Product</option>
                                 </select>
@@ -48,18 +47,18 @@
                         </div>
 
 		        		<div class="row">
-		                	<div class="col-md-6 mb-4">
+		                	<div class="col-md-12 mb-4">
 		                        <label for="product_name_en" class="col-form-label" style="font-weight: bold;">Product Name <span class="text-danger">*</span></label>
 		                        <input class="form-control" id="product_name_en" type="text" name="name_en" required placeholder="Write product name english" value="{{old('name_en')}}">
 		                        @error('name_en')
 		                            <p class="text-danger">{{$message}}</p>
 		                        @enderror
 		                    </div>
-		                    <div class="col-md-6 mb-4 d-none">
+		                    <div class="col-md-12 mb-4 d-none">
 	                           	<label for="product_name_bn" class="col-form-label" style="font-weight: bold;">Product Name (Bn):</label>
 	                           	<input class="form-control" id="product_name_bn" type="text" name="name_bn" placeholder="Write product name bangla" value="{{old('name_bn')}}">
 		                    </div>
-                            <div class="col-md-6 mb-4">
+                            <div class="col-md-6 mb-4 d-none">
                                 <label for="product_category" class="col-form-label" style="font-weight: bold;">Category: <span class="text-danger">*</span></label>
                                 @if(Auth::guard('admin')->user()->role == 1)
                                     <a style="background-color: #365486 !important; "class="btn btn-sm float-end" data-bs-toggle="modal" data-bs-target="#category"><i class="fa-solid fa-plus text-white"></i></a>
@@ -68,7 +67,7 @@
                                     $selectedCategory = 0;
                                 @endphp
                                 <div class="custom_select">
-                                    <select class="form-control select-active w-100 form-select select-nice" name="category_id" id="product_category" required>
+                                    <select class="form-control select-active w-100 form-select select-nice" name="category_id" id="product_category">
                                         <option disabled hidden {{old('category_id') ? '' : 'selected'}} readonly value="">--Select Category--</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" {{old('category_id')== $category->id ? 'selected' :  '' }}>{{ $category->name_en }}</option>
@@ -91,7 +90,7 @@
 {{--	                        </div>--}}
 
 
-							<div class="col-md-6 mb-4" id="brand_field">
+							<div class="col-md-12 mb-4" id="brand_field">
                                 @if(Auth::guard('admin')->user()->role == 1)
                                     <a style="background-color: #365486 !important; " type="button" class="btn btn-sm float-end" id="closeModal1" data-bs-toggle="modal" data-bs-target="#brand"><i class="fa-solid fa-plus text-white"></i></a>
                                 @endif
@@ -130,7 +129,7 @@
 								@endif
 							@endif
 
-	                        <div class="col-md-6 mb-4" id="supplier_field">
+	                        <div class="col-md-6 mb-4 d-none" id="supplier_field">
 								<label for="supplier_id" class="col-form-label" style="font-weight: bold;">Supplier:</label>
 								<div class="custom_select">
 									<select class="form-control select-active w-100 form-select select-nice" name="supplier_id" id="supplier_id" >
@@ -204,7 +203,7 @@
 		        	</div>
 		        </div>
 
-			    <div class="card " id="product_variation_field">
+			    <div class="card d-none" id="product_variation_field">
 					<div class="card-header" style="background-color: #fff !important;">
 						<h3 style="color: #4f5d77 !important">Product Variation</h3>
 					</div>
@@ -265,11 +264,11 @@
 		        		<!-- Row //-->
 		        		<div class="row">
 
-	                        <div class="col-md-6 mb-4">
+	                        <div class="col-md-6 mb-4 d-none">
 	                          	<label for="discount_price" class="col-form-label" style="font-weight: bold;">Discount Price: <span class="text-danger">*</span></label>
-	                            <input class="form-control" id="discount_price" type="number" id="discount_price" name="discount_price" value="{{old('discount_price', 0)}}" min="0" placeholder="Write product discount value" required>
+	                            <input class="form-control" id="discount_price" type="number" id="discount_price" name="discount_price" value="{{old('discount_price', 0)}}" min="0" placeholder="Write product discount value" >
 	                        </div>
-	                        <div class="col-md-6 mb-4">
+	                        <div class="col-md-6 mb-4 d-none">
 	                         	<label for="discount_type" class="col-form-label" style="font-weight: bold;">Discount Type:</label>
 				                <div class="custom_select">
                                     <select class="form-control select-active w-100 form-select select-nice" name="discount_type" id="discount_type" >
@@ -340,7 +339,7 @@
                 @endif
 
 
-		        <div class="card">
+		        <div class="card d-none">
 		        	<div class="card-header" style="background-color: #fff !important;">
 						<h3 style="color: #4f5d77 !important">Short Description</h3>
 					</div>
@@ -349,7 +348,7 @@
 		        			<!-- Description Start -->
 	                        <div class="col-md-12 mb-4">
 	                          	<label for="long_descp_en" class="col-form-label" style="font-weight: bold;">Description: <span class="text-danger">*</span></label>
-	                            <textarea required name="short_description_en" rows="2" cols="2" class="form-control summernote" placeholder="Write Short Description English" required>{{old('description_en')}}</textarea>
+	                            <textarea  name="short_description_en" rows="2" cols="2" class="form-control summernote" placeholder="Write Short Description English" >{{old('description_en')}}</textarea>
 	                        </div>
 	                        <div class="col-md-6 mb-4 d-none">
 	                          	<label for="long_descp_bn" class="col-form-label" style="font-weight: bold;">Description (Bn):</label>
@@ -361,14 +360,14 @@
 		        </div>
 		        <div class="card">
 		        	<div class="card-header" style="background-color: #fff !important;">
-						<h3 style="color: #4f5d77 !important">Detailed Description</h3>
+						<h3 style="color: #4f5d77 !important"> Description</h3>
 					</div>
 		        	<div class="card-body">
 		        		<div class="row">
 		        			<!-- Description Start -->
 	                        <div class="col-md-12 mb-4">
 	                          	<label for="long_descp_en" class="col-form-label" style="font-weight: bold;">Description: <span class="text-danger">*</span></label>
-	                            <textarea required name="description_en" rows="2" cols="2" class="form-control summernote" placeholder="Write Long Description English" required>{{old('description_en')}}</textarea>
+	                            <textarea  name="description_en" rows="2" cols="2" class="form-control summernote" placeholder="Write Long Description English" >{{old('description_en')}}</textarea>
 	                        </div>
 	                        <div class="col-md-6 mb-4 d-none">
 	                          	<label for="long_descp_bn" class="col-form-label" style="font-weight: bold;">Description (Bn):</label>
@@ -415,13 +414,13 @@
                                     <label class="form-check-label cursor" for="is_digital">Digital</label>
                                 </div>
                           	</div>
-                          	<div class="row">
+                          	<div class="row d-none">
                           		<div class="custom-control custom-switch ">
                                     <input type="checkbox" class="form-check-input me-2 cursor" name="is_featured" id="is_featured" value="1">
                                     <label class="form-check-label cursor" for="is_featured">Featured</label>
                                 </div>
                           	</div>
-                            <div class="row">
+                            <div class="row d-none">
                                 <div class="custom-control custom-switch ">
                                     <input type="checkbox" class="form-check-input me-2 cursor" name="is_replaceable" id="is_replaceable" value="1">
                                     <label class="form-check-label cursor" for="is_replaceable">Replaceable</label>

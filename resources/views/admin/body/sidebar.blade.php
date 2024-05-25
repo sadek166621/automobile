@@ -44,12 +44,28 @@
                 {{ ($route == 'cars.create')? 'active':'' }}
             ">
                     <a class="menu-link" href="#">
-                        <i class="fa fa-image fontawesome_icon_custom"></i>
+                        <i class="fa fa-car fontawesome_icon_custom"></i>
                         <span class="text">Cars</span>
                     </a>
                     <div class="submenu">
                         <a class="{{ ($route == 'cars.index') ? 'active':'' }}" href="{{ route('cars.index') }}">Cars List</a>
                         <a class="{{ ($route == 'cars.create') ? 'active':'' }}" href="{{ route('cars.create') }}">Cars Add</a>
+                    </div>
+                </li>
+            @endif
+
+            @if(Auth::guard('admin')->user()->role == '1')
+                <li class="menu-item has-submenu
+                {{ ($route == 'service-before-sell.preorder')? 'active':'' }}
+                {{ ($route == 'service-before-sell.exchange')? 'active':'' }}
+            ">
+                    <a class="menu-link" href="#">
+                        <i class="fa fa-wrench fontawesome_icon_custom"></i>
+                        <span class="text">Service Before Sell</span>
+                    </a>
+                    <div class="submenu">
+                        <a class="{{ ($route == 'service-before-sell.preorder') ? 'active':'' }}" href="{{ route('service-before-sell.preorder') }}">Preorder List</a>
+                        <a class="{{ ($route == 'service-before-sell.exchange') ? 'active':'' }}" href="{{ route('service-before-sell.exchange') }}">Car Exchange List</a>
                     </div>
                 </li>
             @endif
@@ -71,6 +87,27 @@
                     @endif
                     @if(Auth::guard('admin')->user()->role == '1' || in_array('37', json_decode(Auth::guard('admin')->user()->staff->role->permissions)))
                         <a class="{{ ($route == 'slider.create') ? 'active':'' }}" href="{{ route('slider.create') }}">Slider Add</a>
+                    @endif
+                </div>
+            </li>
+
+            <li class="menu-item has-submenu
+                {{ ($route == 'our-customer.index')? 'active':'' }}
+                {{ ($route == 'our-customer.edit')? 'active':'' }}
+                {{ ($route == 'our-customer.create')? 'active':'' }}
+            ">
+                @if(Auth::guard('admin')->user()->role == '1' || in_array('37', json_decode(Auth::guard('admin')->user()->staff->role->permissions)))
+                    <a class="menu-link" href="#">
+                        <i class="fa fa-sliders fontawesome_icon_custom"></i>
+                        <span class="text">Our-Customer</span>
+                    </a>
+                @endif
+                <div class="submenu">
+                    @if(Auth::guard('admin')->user()->role == '1' || in_array('37', json_decode(Auth::guard('admin')->user()->staff->role->permissions)))
+                        <a class="{{ ($route == 'our-customer.index') ? 'active':'' }}" href="{{ route('our-customer.index') }}">Our Customer List</a>
+                    @endif
+                    @if(Auth::guard('admin')->user()->role == '1' || in_array('37', json_decode(Auth::guard('admin')->user()->staff->role->permissions)))
+                        <a class="{{ ($route == 'our-customer.create') ? 'active':'' }}" href="{{ route('our-customer.create') }}">Our Customer Add</a>
                     @endif
                 </div>
             </li>
@@ -160,7 +197,7 @@
                 @endif
             @endif
 
-            <li class="menu-item has-submenu
+            <li class="menu-item has-submenu d-none
                 {{ ($route == 'campaing.index')? 'active':'' }}
                 {{ ($route == 'campaing.create')? 'active':'' }}
                 {{ ($route == 'campaing.edit')? 'active':'' }}
@@ -181,7 +218,7 @@
                 </div>
             </li>
             @if(Auth::guard('admin')->user()->role == '1')
-             <li class="menu-item has-submenu
+             <li class="menu-item has-submenu d-none
                 {{ ($route == 'coupons.index')? 'active':'' }}
                 {{ ($route == 'coupons.create')? 'active':'' }}
                 {{ ($route == 'coupons.edit')? 'active':'' }}
@@ -196,7 +233,7 @@
                 </div>
             </li>
             @endif
-            <li class="menu-item has-submenu {{ ($prefix == 'admin/supplier')?'active':'' }}">
+            <li class="menu-item has-submenu d-none {{ ($prefix == 'admin/supplier')?'active':'' }}">
                 @if(Auth::guard('admin')->user()->role == '1' || in_array('45', json_decode(Auth::guard('admin')->user()->staff->role->permissions)))
                     <a class="menu-link " href="#">
                         <i class="fas fa-truck fontawesome_icon_custom"></i>
@@ -261,7 +298,7 @@
 {{--                    @endif--}}
 {{--                </div>--}}
 {{--            </li>--}}
-            <li class="menu-item has-submenu
+            <li class="menu-item has-submenu d-none
                 {{ ($route == 'staff.index')? 'active':'' }}
                 {{ ($route == 'staff.create')? 'active':'' }}
                 {{ ($route == 'staff.edit')? 'active':'' }}
@@ -285,7 +322,7 @@
                 </div>
             </li>
             @if(Auth::guard('admin')->user()->role == '1')
-            <li class="menu-item has-submenu
+            <li class="menu-item has-submenu d-none
                 {{ ($route == 'stock_report.index')? 'active':'' }}
             ">
                 <a class="menu-link" href="#">

@@ -19,6 +19,7 @@ use App\Models\Carm;
 use App\Models\OrderDetail;
 use App\Models\Vendor;
 use App\Models\Coupon;
+use App\Models\ServiceBefore;
 use App\Models\Shipping;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
@@ -324,13 +325,15 @@ class FrontendController extends Controller
         $category_ids[] = $category->id;
         $products->whereIn('category_id', $category_ids);
 
+        $nw_cats = Banner::where('category',$category->slug)->get();
+
         $products = $products->orderBy('created_at', 'desc')->paginate(12);
 
         $categories = Category::orderBy('name_en','ASC')->where('status','=',1)->get();
         // dd($products);
         $subcategories = Category::orderBy('name_en','ASC')->where('status',1)->where('parent_id',$category->id)->get();
 
-        return view('FrontEnd.product.category_view',compact('products','categories','category','sort_by','brand_id','subcategories'));
+        return view('FrontEnd.product.category_view',compact('nw_cats','products','categories','category','sort_by','brand_id','subcategories'));
     } // end method
     /* ========== End CatWiseProduct Method ======== */
 
@@ -628,10 +631,14 @@ protected function getShippingCharge($shipping_id)
         return view('FrontEnd.about_us.index', compact('page'));
      }
      public function servicebeforesale(){
-        return view('FrontEnd.service.service-before-sale');
+
+        $data['brands'] = brand::orderBy('id','desc')->get();
+
+        return view('FrontEnd.service.service-before-sale',$data);
      }
      public function ourcustomers(){
-        return view('FrontEnd.our-customers.index');
+        $customers = DB::table('our_customers')->orderBy('id','desc')->get();
+        return view('FrontEnd.our-customers.index',compact('customers'));
 
      }
      public function loanhelp(){
@@ -639,7 +646,19 @@ protected function getShippingCharge($shipping_id)
     }
 
      public function loancal(){
-        return view('FrontEnd.car-load.loan-cal');
+       $data['cars'] = DB::table('banners')->get();
+        return view('FrontEnd.car-load.loan-cal',$data);
+    }
+    public function getCarPrice($id)
+    {
+        // $car = Car::find($id);
+        $car = DB::table('banners')->where('id',$id)->first();
+
+        if ($car) {
+            return response()->json(['price' => $car->price]);
+        } else {
+            return response()->json(['error' => 'Car not found'], 404);
+        }
     }
      public function accessories(){
         $data['products'] = Product::orderBy('name_en')->where('status','=',1)->latest()->get();
@@ -801,6 +820,58 @@ protected function getShippingCharge($shipping_id)
     //    $page->help_bn = $request->help_bn;
     //    $page->save();
     //    return back();
+    }
+
+
+
+    public function customerpreorderreq(Request $request){
+        // dd($request);
+        ServiceBefore::create([
+            'preorder_manufacturer'=> $request->preorder_manufacturer,
+            'preorder_year'=> $request->preorder_year,
+            'preorder_color'=> $request->preorder_color,
+            'preorder_delivary_date'=> $request->preorder_delivary_date,
+            'preorder_model'=> $request->preorder_model,
+            'preorder_grade'=> $request->preorder_grade,
+            'preorder_mileage'=> $request->preorder_mileage,
+            'name'=> $request->name,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            'address'=> $request->address,
+            'position'=> 1,
+        ]);
+
+        Session::flash('success','Form Submitted Successfully');
+        return back();
+    }
+    public function customercarexchange(Request $request){
+        // dd($request);
+        ServiceBefore::create([
+            'your_car_manufacturer'=> $request->your_car_manufacture,
+            'your_car_year'=> $request->your_car_year,
+            'your_car_preferred_color'=> $request->your_car_preferred_color,
+            'your_car_preferred_delivery_date'=> $request->your_car_preferred_delivery_date,
+            'your_car_model'=> $request->your_car_model,
+            'your_car_preferred_grade'=> $request->your_car_preferred_grade,
+            'your_car_preferred_mileage'=> $request->your_car_preferred_mileage,
+            'your_description'=> $request->your_description,
+            'preferred_manufacturer'=> $request->preferred_manufacturercode,
+            'preferred_year'=> $request->preferred_year,
+            'preferred_color'=> $request->preferred_color,
+            'preferred_delivary_date'=> $request->preferred_delivary_date,
+            'preferred_model'=> $request->preferred_model,
+            'preferred_grade'=> $request->preferred_grade,
+            'preferred_mileage'=> $request->preferred_mileage,
+            'preferred_description'=> $request->preferred_description,
+            'name'=> $request->name,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            'address'=> $request->address,
+            'position'=> 2,
+        ]);
+
+        Session::flash('success','Form Submitted Successfully');
+        return back();
     }
 
 

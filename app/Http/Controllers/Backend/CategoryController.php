@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Banner;
 use Illuminate\Support\Carbon;
 use Session;
 use Image;
@@ -251,8 +252,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        // dd('dstry');
         if(!demo_mode()){
             $category = Category::findOrFail($id);
+            $carms = DB::table('banners')->where('category', $category->slug)->update([
+                'category' => 'NA-NVXxM',
+            ]);
 
             CategoryUtility::delete_category($id);
 
@@ -320,6 +325,8 @@ class CategoryController extends Controller
     /*=================== Start CategoryDelete Methoed ===================*/
     public function CategoryDelete($id){
 
+        // dd('cat_clt');
+
     	$category = Category::findOrFail($id);
     	// $img = $category->category_image;
 
@@ -327,7 +334,10 @@ class CategoryController extends Controller
         //     unlink($img);
         // }
 
+
     	$category->delete();
+
+
 
     	$notification = array(
             'message' => 'Category Deleted Successfully.',

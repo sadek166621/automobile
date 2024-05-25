@@ -69,7 +69,7 @@
     </div>
     <div class="row">
         @if(Auth::guard('admin')->user()->role != '2')
-        <div class="col-lg-3">
+        <div class="col-lg-3 d-none">
             <div class="card card-body mb-4 shadow p-3 mb-5 bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-primary-light"><i class="fa-solid fa-money-check-dollar"></i></span>
@@ -84,7 +84,7 @@
         @endif
         @if(Auth::guard('admin')->user()->role == '2')
             @php $vendor = \App\Models\Vendor::where('user_id', Auth::guard('admin')->user()->id)->first() @endphp
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card card-body mb-4 shadow bg-white rounded" style="border: 1px solid #365486">
                         <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-success-light"><i
@@ -100,7 +100,7 @@
                 </div>
         @endif
         @if(Auth::guard('admin')->user()->role != '2')
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card card-body mb-4 shadow p-3 mb-5 bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-success-light"><i class="fa-solid fa-truck-fast"></i></span>
@@ -113,7 +113,7 @@
             </div>
         </div>
         @endif
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card card-body mb-4 shadow bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-success-light"><i
@@ -128,7 +128,7 @@
             </div>
         </div>
         @if(Auth::guard('admin')->user()->role != '2')
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card card-body mb-4 shadow bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-info-light"><i class="fa-solid fa-user-tie"></i></span>
@@ -142,13 +142,13 @@
         </div>
 
 
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card card-body mb-4 shadow bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
-                    <span class="icon icon-sm rounded-circle bg-success-light"><i class="fa-solid fa-clipboard-user"></i></span>
+                    <span class="icon icon-sm rounded-circle bg-success-light"><i class="fa-solid fa-car"></i></span>
                     <div class="text">
-                        <h6 class="mb-1 card-title">Staff</h6>
-                        <span>{{ $StaffCount }}</span>
+                        <h6 class="mb-1 card-title">Cars</h6>
+                        <span>{{ $carsCount->total_cars }}</span>
                         {{-- <span class="text-sm"> In {{ number_format($categoryCount->total_categories) }} Categories
                         </span> --}}
                     </div>
@@ -156,7 +156,7 @@
             </div>
         </div>
         @endif
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card card-body mb-4 shadow bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-success-light"><i class="fa-solid fa-copyright"></i></span>
@@ -169,7 +169,7 @@
             </div>
         </div>
         @if(Auth::guard('admin')->user()->role != '2')
-        <div class="col-lg-3">
+        <div class="col-lg-3 d-none">
             <div class="card card-body mb-4 shadow bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-success-light"><i class="fa-solid fa-users"></i></span>
@@ -182,7 +182,7 @@
             </div>
         </div>
         @endif
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card card-body mb-4 shadow bg-white rounded" style="border: 1px solid #365486">
                 <article class="icontext">
                     <span class="icon icon-sm rounded-circle bg-success-light"><i class="fa-solid fa-battery-quarter"></i></span>

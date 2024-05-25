@@ -148,7 +148,7 @@
         font-size: 17px;
         font-weight: 500;
         width: 100%;
-        margin-top: 207px;
+        margin-top: 113px;
     }
     .imagezoom-cursor {
         position: absolute;
@@ -219,8 +219,12 @@
                         <div class="title"><i class="fa fa-circle"></i> Brand</div><span>:</span>
                         <div class="details">{{$product->brand->name_en ?? 'NA'}}</div>
                     </div>
+                    <div class="key-features">
+                        <div class="title"><i class="fa fa-circle"></i> Stock</div><span>:</span>
+                        <div class="details">{{$product->stock_qty}}</div>
+                    </div>
 
-                    <div class="description">Booking money for pre order.. Please let us know through email once you made the payment</div>
+                    <div class="description">{!!  $product->description_en !!}</div>
                     <button class="buy_now" type="submit" onclick="buyNow({{ $product->id }})" ><i class="fa fa-shopping-cart"></i> Buy Now</button>
                     <input type="hidden" id="pfrom" value="direct">
                     <input type="hidden" id="product_product_id" value="{{ $product->id }}" min="1">

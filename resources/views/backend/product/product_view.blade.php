@@ -21,11 +21,11 @@
                             <th scope="col">Product Image</th>
                             <th scope="col">Name</th>
 {{--                            <th scope="col">Name (Bangla)</th>--}}
-                            <th scope="col">Category</th>
+                            {{-- <th scope="col">Category</th> --}}
                             <th scope="col">Product Price </th>
 							<th scope="col">Quantity </th>
-							<th scope="col">Discount </th>
-                            <th scope="col">Featured</th>
+							{{-- <th scope="col">Discount </th> --}}
+                            {{-- <th scope="col">Featured</th> --}}
                             <th scope="col">Status</th>
                             <th scope="col" class="text-end">Action</th>
                         </tr>
@@ -46,7 +46,7 @@
 
                             </td>
 {{--                            <td> {{ $item->name_bn ?? 'NULL' }} </td>--}}
-                            <td> {{ $item->category->name_en }} </td>
+                            {{-- <td> {{ $item->category->name_en }} </td> --}}
                             <td> {{ $item->regular_price ?? 'NULL' }} </td>
                             <td>
                                 @if($item->is_varient)
@@ -55,7 +55,7 @@
                                     {{ $item->stock_qty ?? 'NULL' }}
                                 @endif
                             </td>
-                            <td>
+                            {{-- <td>
                             	@if($item->discount_price > 0)
                                     @if($item->discount_type == 1)
                                         <i class="fa fa-minus text-danger"></i>
@@ -66,8 +66,8 @@
                                 @else
 								 	<span class="text-secondary">None</span>
 								@endif
-                            </td>
-                            <td>
+                            </td> --}}
+                            {{-- <td>
                                 @if($item->is_featured == 1)
                                     <a href="{{ route('product.featured',['id'=>$item->id]) }}" title="Featured Product">
                                         <span class="feature-status"><i class="fa-solid fa-tag text-success"></i></span>
@@ -75,7 +75,7 @@
                                 @else
                                     <a href="{{ route('product.featured',['id'=>$item->id]) }}" title="Not Featured Product"> <span class="feature-status"><i class="fa fa-tag text-danger"></i></span></a>
                                 @endif
-                            </td>
+                            </td> --}}
                             <td>
                                 @if($item->status == 1)
                                   <a href="{{ route('product.in_active',['id'=>$item->id]) }}">
@@ -85,7 +85,7 @@
                                   <a href="{{ route('product.active',['id'=>$item->id]) }}" > <span class="product-status badge rounded-pill alert-danger">Disable</span></a>
                                 @endif
                             </td>
-                            <td >
+                            <td>
                                 <div class="btn-group" style="margin: 50% 0">
                                     <a class="btn btn-primary" href="{{ route('product.edit',$item->id) }}" title="Edit Info"
                                        style="padding:12px; margin-right: 5px; border-radius: 5px"><i class="fa fa-pencil"></i></a>

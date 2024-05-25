@@ -171,11 +171,26 @@
 <!-- Team Page Section -->
 <section class="cars">
     <br>
-        <form action="">
+    <form action="{{route('message.submit')}}" method="post">
+        @csrf
            <div>
              <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8" style="box-shadow: 0 0 10px rgba(0, 0, 0, .2); ">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-6" style="padding: 25px 25px 17px 25px;">
                             <h4 class="control-label">Contact Us</h4>
@@ -183,36 +198,37 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="control-label" for="ManufacturerCode">Name</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Name">
+                                    <input type="text" class="form-control" required name="name" placeholder="Name">
 
                                     <label class="control-label" for="ManufacturerCode">Contact</label>
-                                    <input type="text" class="form-control" name="contact" placeholder="Contact">
+                                    <input type="number" class="form-control" required name="subject" placeholder="Contact">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label" for="ManufacturerCode">Email</label>
-                                    <input type="text" class="form-control" name="email" placeholder="email">
+                                    <input type="email" class="form-control" required name="email" placeholder="email">
 
                                 </div>
                                 <div class="col-md-12">
                                     <label for="" class="control-label">Description</label>
-                                    <textarea name="" id="" ></textarea>
+                                    <textarea required name="message" placeholder="Leave a message here" id="" ></textarea>
                                     <button type="submit" style="border: 1px solid white" class="btn btn-dark float-right">Submit</button>
 
                                 </div>
 
                             </div>
                         </div>
+                    </form>
                         <div class="col-md-6" style="background-color: #00ace8; padding: 25px 25px 17px 25px; color: white;">
                             <div>
                             <h3>Phone</h3>
-                            <h3>01700000000</h3>
+                            <h3>{{get_setting('phone')->value}}</h3>
                             <br><br>
                             <h3>Email</h3>
-                            <h3>info@maxima@gmail.com
+                            <h3>{{get_setting('email')->value}}
                             </h3>
                             <br><br>
                             <h3>Address</h3>
-                            <h3>#</h3>
+                            <h3>{{get_setting('business_address')->value}}</h3>
                             </div>
 
                         </div>
@@ -222,7 +238,7 @@
                 </div>
 
            </div>
-        </form>
+
 
     </div>
 

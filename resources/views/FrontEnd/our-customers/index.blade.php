@@ -59,6 +59,8 @@
 
         <div class="row clearfix">
           <!-- Team Block -->
+
+          @foreach ($customers as $key=> $customer )
           <div class="team-block col-lg-4 col-md-6 col-sm-12">
             <div class="inner-box">
               <span class="triangle-one"></span>
@@ -67,7 +69,7 @@
                 <!-- Social Box -->
 
 
-                <img src="{{asset('FrontEnd')}}/assets/images/resource/team-1.jpg" alt="" />
+                <img src="{{ asset($customer->image) }}" alt="" class="img-fluid customer-image" data-toggle="modal" data-target="#customerModal{{ $key }}" data-image="{{ asset($customer->image) }}" />
                 {{-- <div class="overlay-box">
                   <h3><a href="team-detail.html">Luiz Hector</a></h3>
                   <div class="designation">CEO of Carsore</div>
@@ -75,162 +77,37 @@
               </div>
             </div>
           </div>
-
-          <!-- Team Block -->
-          <div class="team-block col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <span class="triangle-one"></span>
-              <span class="triangle-two"></span>
-              <div class="image">
-                <!-- Social Box -->
-                {{-- <ul class="social-box">
-                  <li>
-                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-                  </li>
-                  <li>
-                    <a href="https://google.com/" class="fab fa-google"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
-                  </li>
-                </ul> --}}
-
-                <img src="{{asset('FrontEnd')}}/assets/images/resource/team-2.jpg" alt="" />
-                {{-- <div class="overlay-box">
-                  <h3><a href="team-detail.html">Luiz Hector</a></h3>
-                  <div class="designation">CEO of Carsore</div>
-                </div> --}}
-              </div>
+          <div class="modal fade" id="customerModal{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="customerModalLabel">Customer Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img style="
+                        height: 290px;
+                    " src="{{ asset($customer->image) }}" class="img-fluid" alt="Customer Image" />
+                        <span style="
+                        font-size: larger;
+                    ">Product Code : {{ $customer->product_code }}</span><br>
+                        <span style="
+                        font-size: larger;
+                    "> Delivered To : {{ $customer->delivered }} </span><br>
+                        <span style="
+                        font-size: larger;
+                    "> Delivary Date : {{ $customer->delivery_date }} </span><br>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <!-- Team Block -->
-          <div class="team-block col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <span class="triangle-one"></span>
-              <span class="triangle-two"></span>
-              <div class="image">
-                <!-- Social Box -->
-                {{-- <ul class="social-box">
-                  <li>
-                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-                  </li>
-                  <li>
-                    <a href="https://google.com/" class="fab fa-google"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
-                  </li>
-                </ul> --}}
-
-                <img src="{{asset('FrontEnd')}}/assets/images/resource/team-3.jpg" alt="" />
-                {{-- <div class="overlay-box">
-                  <h3><a href="team-detail.html">Luiz Hector</a></h3>
-                  <div class="designation">CEO of Carsore</div>
-                </div> --}}
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Block -->
-          <div class="team-block col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <span class="triangle-one"></span>
-              <span class="triangle-two"></span>
-              <div class="image">
-                <!-- Social Box -->
-                {{-- <ul class="social-box">
-                  <li>
-                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-                  </li>
-                  <li>
-                    <a href="https://google.com/" class="fab fa-google"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
-                  </li>
-                </ul> --}}
-
-                <img src="{{asset('FrontEnd')}}/assets/images/resource/team-3.jpg" alt="" />
-                {{-- <div class="overlay-box">
-                  <h3><a href="team-detail.html">Luiz Hector</a></h3>
-                  <div class="designation">CEO of Carsore</div>
-                </div> --}}
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Block -->
-          <div class="team-block col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <span class="triangle-one"></span>
-              <span class="triangle-two"></span>
-              <div class="image">
-                <!-- Social Box -->
-                {{-- <ul class="social-box">
-                  <li>
-                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-                  </li>
-                  <li>
-                    <a href="https://google.com/" class="fab fa-google"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
-                  </li>
-                </ul> --}}
-
-                <img src="{{asset('FrontEnd')}}/assets/images/resource/team-1.jpg" alt="" />
-                {{-- <div class="overlay-box">
-                  <h3><a href="team-detail.html">Luiz Hector</a></h3>
-                  <div class="designation">CEO of Carsore</div>
-                </div> --}}
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Block -->
-          <div class="team-block col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <span class="triangle-one"></span>
-              <span class="triangle-two"></span>
-              <div class="image">
-                <!-- Social Box -->
-                {{-- <ul class="social-box">
-                  <li>
-                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-                  </li>
-                  <li>
-                    <a href="https://google.com/" class="fab fa-google"></a>
-                  </li>
-                  <li>
-                    <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
-                  </li>
-                </ul> --}}
-
-                <img src="{{asset('FrontEnd')}}/assets/images/resource/team-2.jpg" alt="" />
-                {{-- <div class="overlay-box">
-                  <h3><a href="team-detail.html">Luiz Hector</a></h3>
-                  <div class="designation">CEO of Carsore</div>
-                </div> --}}
-              </div>
-            </div>
-          </div>
         </div>
+          @endforeach
+
+
+          <!-- Team Block -->
+
 
         <!-- Load Btn -->
         {{-- <div class="load-btn text-center">
@@ -274,3 +151,13 @@
     </div>
   </section>
 @endsection
+@push('js')
+{{-- <script>
+    $(document).ready(function() {
+        $('.customer-image').on('click', function() {
+            var imageUrl = $(this).data('image');
+            $('#modalImage').attr('src', imageUrl);
+        });
+    });
+</script> --}}
+@endpush

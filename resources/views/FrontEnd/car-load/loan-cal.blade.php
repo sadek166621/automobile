@@ -330,15 +330,18 @@
                 <div class="calculate-context">
                     <div class="form-group">
                         <label class="control-label" for="Product">SELECT A CAR</label>
-                        <select class="form-control input" id="Product" name="Product">
+                        <select class="form-control input" id="caritm" name="Product">
                             <option value="">-- Select a Vehicle --</option>
-                            <option value="PRD000000000823">Toyota-Fielder-2019(EX)-NKE165-7226843</option>
+                            @foreach($cars as $car)
+                            <option value="{{ $car->id }}">{{ $car->title_en }}</option>
+                            @endforeach
                         </select>
                         <span class="field-validation-valid text-danger" data-valmsg-for="Product" data-valmsg-replace="true"></span>
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="VehiclePrice">VEHICLE PRICE (BDT)</label>
-                        <input class="form-control input" id="VehiclePrice" name="VehiclePrice" type="number" value="" />
+                        {{-- <input class="form-control input" id="VehiclePrice" name="VehiclePrice" type="number" value="" /> --}}
+                        <input type="text" id="VehiclePrice" name="VehiclePrice" class="form-control" readonly>
                         <span class="field-validation-valid text-danger" data-valmsg-for="VehiclePrice" data-valmsg-replace="true"></span>
                     </div>
                     <div class="form-group">
@@ -450,6 +453,29 @@
 
 @push('js')
 <script>
+    $(document).ready(function() {
+        $('#caritm').change(function() {
+            // alert('ok');
+            var carId = $(this).val();
+            if (carId) {
+                $.ajax({
+                    url: '/get-car-price/' + carId,
+                    type: 'GET',
+                    success: function(response) {
+                        // alert(response.price);
+                        $('#VehiclePrice').val(response.price);
+                    },
+                    error: function() {
+                        $('#VehiclePrice').val('Error fetching price');
+                    }
+                });
+            } else {
+                $('#VehiclePrice').val('');
+            }
+        });
+    });
+</script>
+<script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip().tooltip('show');
     });
@@ -529,5 +555,6 @@
 
 
 </script>
+
 
 @endpush

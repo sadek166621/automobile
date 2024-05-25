@@ -26,6 +26,7 @@ use App\Http\Controllers\Backend\SmsController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\SubscriberController;
 use App\Http\Controllers\Backend\SupplierController;
+use App\Http\Controllers\Backend\OurCustomerController;
 //use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\VendorController;
@@ -239,6 +240,17 @@ Route::middleware('adminAccess')->group(function(){
 
     });
 
+
+    Route::prefix('service-before-sell')->group(function(){
+
+        Route::get('/preorder', [AdminController::class, 'preorder'])->name('service-before-sell.preorder');
+        Route::get('/preorder/distroy/{id}', [AdminController::class, 'preorderdistory'])->name('service-before-sell.preorder.distroy');
+        Route::get('/exchange', [AdminController::class, 'exchange'])->name('service-before-sell.exchange');
+        Route::get('/exchange/view/{id}', [AdminController::class, 'exchangeview'])->name('service-before-sell.exchange.view');
+        Route::get('/exchange/distroy/{id}', [AdminController::class, 'exchangedistroy'])->name('service-before-sell.exchange.distroy');
+
+    });
+
     // Attribute All Route
     Route::resource('/attribute', AttributeController::class);
     Route::get('/attribute/delete/{id}', [AttributeController::class, 'destroy'])->name('attribute.delete');
@@ -255,6 +267,11 @@ Route::middleware('adminAccess')->group(function(){
 	Route::get('/slider/delete/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
 	Route::get('/slider_active/{id}', [SliderController::class, 'active'])->name('slider.active');
 	Route::get('/slider_inactive/{id}', [SliderController::class, 'inactive'])->name('slider.in_active');
+
+
+	// Our Customer All Routes
+	Route::resource('/our-customer', OurCustomerController::class);
+	Route::get('/our-customer/delete/{id}', [OurCustomerController::class, 'destroy'])->name('our-customer.destroy');
 
 	// Admin Vendor All Routes
 	Route::resource('/vendor', VendorController::class);

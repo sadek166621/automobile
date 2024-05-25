@@ -267,7 +267,7 @@
                                     <div class="clearfix"></div>
                                     <input class="form-control" data-val="true"
                                         data-val-length="The field Address must be a string with a maximum length of 250."
-                                        data-val-length-max="250" id="Address" name="Address" type="text" value="" />
+                                        data-val-length-max="250" id="Address" name="address" type="text" value="" />
                                     <span class="field-validation-valid text-danger" data-valmsg-for="Address"
                                         data-valmsg-replace="true"></span>
                                 </div>

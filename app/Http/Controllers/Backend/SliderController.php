@@ -124,6 +124,7 @@ class SliderController extends Controller
         $this->validate($request,[
             'title_en' => 'required',
             'description_en' => 'required',
+            'slider_img' => 'required',
             'type' => 'required'
         ]);
 

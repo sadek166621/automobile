@@ -78,10 +78,12 @@
                             @if(Auth::guard('admin')->user()->role != '2')
                                 <td >
                                     <div class=" btn-group" style="margin: 25% 0">
+                                        @if ($category->id != 32)
                                         <a href="{{ route('category.edit',$category->id) }}" class="btn btn-primary" title="Edit"
                                            style="padding:12px; margin-right: 5px; border-radius: 5px"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('category.delete',$category->id) }}" class="btn btn-danger" title="Delete"
-                                           style="border-radius: 5px"><i class="fa fa-trash"></i></a>
+                                            style="border-radius: 5px"><i class="fa fa-trash"></i></a>
+                                        @endif
                                     </div>
 
                                 </td>

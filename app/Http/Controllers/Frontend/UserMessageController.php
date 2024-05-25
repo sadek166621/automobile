@@ -11,7 +11,7 @@ class UserMessageController extends Controller
 {
     public function submit(Request $request)
     {
-//        return $request;
+    //    return $request;
         $request->validate([
             'email'     => ['required', 'email'],
             'subject'   => ['required'],

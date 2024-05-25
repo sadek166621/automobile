@@ -74,12 +74,12 @@
                 <div class="column col-lg-6 col-md-6 col-6">
                   <h3>Company</h3>
                   <ul class="list-links">
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">our team</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">insurance</a></li>
+                    <li><a href="{{ route('page.about') }}">About us</a></li>
+                    <li><a href="{{ route('find-a-car') }}">Find A Car</a></li>
+                    <li><a href="{{ route('our-customers') }}">Our Customer</a></li>
+                    <li><a href="{{ route('accessories') }}">Service After Sales</a></li>
+                    <li><a href="{{ route('service-before-sale') }}">Service Before Sales</a></li>
                     <li><a href="#">blog</a></li>
-                    <li><a href="#">contact us</a></li>
                   </ul>
                 </div>
                 <!-- Column -->
@@ -105,27 +105,19 @@
 
               <!-- Quote Form -->
               <div class="quote-form">
-                <form method="post" action="https://themeim.com/demo/carsore/appointment.html">
+                <form action="{{route('message.submit')}}" method="post">
+                    @csrf
                   <div class="clearfix">
-                    <div class="form-group">
-                      <input type="text" name="username" placeholder="Your Name *" required="" />
-                    </div>
 
                     <div class="form-group">
                       <input type="email" name="email" placeholder="Your Email" required="" />
                     </div>
-
-                    <!--Form Group-->
                     <div class="form-group">
-                      <select class="custom-select-box nice-select">
-                        <option>Your Subject</option>
-                        <option>Subject 01</option>
-                        <option>Subject 02</option>
-                        <option>Subject 03</option>
-                        <option>Subject 04</option>
-                      </select>
+                      <input type="text" name="subject" placeholder="Your Contact Number" required="" />
                     </div>
-
+                    <div class="form-group">
+                      <input type="text" name="message" placeholder="Your Subject" required="" />
+                    </div>
                     <div class="form-group">
                       <button class="theme-btn submit-btn" type="submit" name="submit-form">
                         Submit Now

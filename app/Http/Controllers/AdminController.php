@@ -66,6 +66,11 @@ class AdminController extends Controller
             ->where('status', 1)
             ->first();
 
+        $carsCount = DB::table('banners')
+            ->select(DB::raw('count(*) as total_cars'))
+            ->where('status', 1)
+            ->first();
+
         $brandCount = DB::table('brands')
             ->select(DB::raw('count(*) as total_brands'))
             ->where('status', 1)
@@ -105,7 +110,7 @@ class AdminController extends Controller
             return view('admin.index', compact('products','userCount', 'productCount', 'categoryCount', 'brandCount', 'vendorCount', 'orderCount', 'lowStockCount','StaffCount','orders'));
         }
 
-    	return view('admin.index', compact('userCount', 'productCount', 'categoryCount', 'brandCount', 'vendorCount', 'orderCount', 'lowStockCount','StaffCount','orders'));
+    	return view('admin.index', compact('carsCount','userCount', 'productCount', 'categoryCount', 'brandCount', 'vendorCount', 'orderCount', 'lowStockCount','StaffCount','orders'));
     } // end method
 
     /*=================== End Dashboard Methoed ===================*/
@@ -284,4 +289,29 @@ class AdminController extends Controller
     } // end method
 
     /* =============== End clearCache Method ================*/
+
+
+    public function preorder(){
+       $data['preorder']= DB::table('service_befores')->where('position', 1)->orderBy('id','desc')->get();
+        return view('backend.service-before-sell.preorder',$data);
+    }
+    public function preorderdistory($id){
+        DB::table('service_befores')->where('id',$id)->delete();
+        Session::flash('success','Deleted Succesfully');
+        return back();
+    }
+    public function exchange(){
+        $data['exchange']= DB::table('service_befores')->where('position', 2)->orderBy('id','desc')->get();
+        return view('backend.service-before-sell.exchange',$data);
+    }
+    public function exchangeview($id){
+        $data['views']= DB::table('service_befores')->where('id',$id)->first();
+        return view('backend.service-before-sell.exchange-view',$data);
+    }
+
+    public function exchangedistroy($id){
+        DB::table('service_befores')->where('id',$id)->delete();
+        Session::flash('success','Deleted Succesfully');
+        return back();
+    }
 }

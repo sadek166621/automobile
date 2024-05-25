@@ -102,11 +102,18 @@ Route::get('/accessories',[FrontendController::class, 'accessories'])->name('acc
 Route::get('/service-before-sale',[FrontendController::class, 'servicebeforesale'])->name('service-before-sale');
 Route::get('/loan-help',[FrontendController::class, 'loanhelp'])->name('loan-help');
 Route::get('/loan-cal',[FrontendController::class, 'loancal'])->name('loan-cal');
+Route::get('/get-car-price/{id}', [FrontendController::class, 'getCarPrice']);
 // Route::get('/loan-cal',[FrontendController::class, 'loancal'])->name('loan-cal');
 Route::get('/terms-and-conditions',[FrontendController::class, 'pageTerms'])->name('page.terms');
 Route::get('/privacy-policy',[FrontendController::class, 'pagePolicy'])->name('page.policy');
 Route::get('/faq',[FrontendController::class, 'pageFaq'])->name('page.faq');
 Route::get('/help',[FrontendController::class, 'pageHelp'])->name('page.help');
+
+
+Route::post('/customer-preorder-req',[FrontendController::class, 'customerpreorderreq'])->name('customer-preorder-req');
+Route::post('/customer-car-exchange',[FrontendController::class, 'customercarexchange'])->name('customer-car-exchange');
+
+// Route::post('/customer-preorder-req',[FrontendController::class, 'customerpreorderreq'])->name('customer-preorder-req')
 // Route::get('/page/{slug}',[FrontendController::class, 'pageAbout'])->name('page.about');
 
 

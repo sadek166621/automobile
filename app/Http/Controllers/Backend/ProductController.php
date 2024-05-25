@@ -61,13 +61,13 @@ class ProductController extends Controller
         $request->validate([
             'name_en'               => 'required|max:150',
             'regular_price'         => 'required|numeric',
-            'short_description_en'  => 'required|string',
+            // 'short_description_en'  => 'required|string',
             'description_en'        => 'required|string',
-            'category_id'           => 'required|integer',
+            // 'category_id'           => 'required|integer',
             'brand_id'              => 'nullable|integer',
             'stock_qty'             => 'required|integer',
             'purchase_price'        => 'required|numeric',
-            'discount_price'        => 'required|numeric',
+            // 'discount_price'        => 'required|numeric',
             'product_thumbnail'     => 'required',
         ]);
 
@@ -124,7 +124,7 @@ class ProductController extends Controller
             $product = Product::create([
                 'brand_id'              => $request->brand_id,
                 'product_type'           => $request->product_type,
-                'category_id'           => $request->category_id,
+                'category_id'           => 32,
                 'vendor_id'             => $request->vendor_id,
                 'supplier_id'           => $request->supplier_id,
                 'unit_id'               => $request->unit_id,
@@ -327,16 +327,10 @@ class ProductController extends Controller
         $this->validate($request,[
             'name_en'               => 'required|max:150',
             'purchase_price'        => 'required|numeric',
-            'wholesell_price'       => 'nullable|numeric',
-            'discount_price'        => 'required|numeric',
             'regular_price'         => 'required|numeric',
             'stock_qty'             => 'required|integer',
-            'short_description_en'  => 'required|string',
             'description_en'        => 'required|string',
-            'category_id'           => 'required|integer',
             'brand_id'              => 'nullable|integer',
-            'unit_id'               => 'nullable|integer',
-            'unit_weight'           => 'nullable|numeric',
         ]);
 
         if(!$request->name_bn){

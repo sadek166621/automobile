@@ -24,7 +24,7 @@
 		        		<div class="row">
 		                	<div class="col-sm-12 mb-4">
 	                           	<label for="title_en" class="col-form-label" style="font-weight: bold;"> Title:</label>
-	                            <input class="form-control" id="title_en" type="text" name="title_en" placeholder="Write cars title" value="{{old('title_en')}}">
+	                            <input class="form-control" required id="title_en" type="text" name="title_en" placeholder="Write cars title" value="{{old('title_en')}}">
 	                            @error('title_en')
                                     <p class="text-danger">{{$message}}</p>
                                 @enderror
@@ -36,23 +36,32 @@
 
 	                        <div class="col-sm-12 mb-4">
 	                          	<label for="description_en" class="col-form-label" style="font-weight: bold;"> Description:</label>
-	                            <textarea class="form-control summernote" type="text" name="description_en" placeholder="Write cars description english" value="{{old('description_en')}}"></textarea>
+	                            <textarea class="form-control summernote" required type="text" name="description_en" placeholder="Write cars description english" value="{{old('description_en')}}"></textarea>
 	                        </div>
 
 	                        <div class="col-sm-12 mb-4">
 	                          	<label for="price" class="col-form-label" style="font-weight: bold;"> Price:</label>
-	                            <input class="form-control" type="number" name="price" placeholder="Write your cars price" value="{{old('price')}}">
+	                            <input class="form-control" type="number" required name="price" placeholder="Write your cars price" value="{{old('price')}}">
 	                        </div>
 
 	                        <div class="col-sm-6 mb-4 d-none">
 	                          	<label for="description_bn" class="col-form-label" style="font-weight: bold;"> Description (Bangla):</label>
-	                            <input class="form-control" id="description_bn" type="text" name="description_bn" placeholder="Write cars description bangla" value="{{old('description_bn')}}">
+	                            <input class="form-control" id="description_bn"  type="text" name="description_bn" placeholder="Write cars description bangla" value="{{old('description_bn')}}">
 	                        </div>
 
                             <div class="col-sm-4 mb-4 ">
+	                          	<label for="manufacturer" class="col-form-label" style="font-weight: bold;"> Category</label>
+	                            {{-- <input class="form-control" type="text" name="manufacturer" required placeholder="Write Manufacturer" value="{{old('manufacturer')}}"> --}}
+                                <select name="category" id=""class="form-control" required>
+                                    @foreach ($categories as $category )
+                                    <option value="{{ $category->slug }}">{{ $category->name_en }}</option>
+                                    @endforeach
+                                </select>
+	                        </div>
+                            <div class="col-sm-4 mb-4 ">
 	                          	<label for="manufacturer" class="col-form-label" style="font-weight: bold;"> Manufacturer</label>
 	                            {{-- <input class="form-control" type="text" name="manufacturer" required placeholder="Write Manufacturer" value="{{old('manufacturer')}}"> --}}
-                                <select name="manufacturer" id="brandSelect"class="form-control">
+                                <select name="manufacturer" id="brandSelect"class="form-control" required>
                                     @foreach ($brands as $brand )
                                     <option value="{{ $brand->id }}">{{ $brand->name_en }}</option>
                                     @endforeach
@@ -61,7 +70,7 @@
                             <div class="col-sm-4 mb-4 ">
 	                          	<label for="manufacturer" class="col-form-label" style="font-weight: bold;"> Model</label>
 	                            {{-- <input class="form-control" type="text" name="manufacturer" required placeholder="Write Manufacturer" value="{{old('manufacturer')}}"> --}}
-                                <select id="carSelect" name="model" class="form-control">
+                                <select id="carSelect" name="model" class="form-control" required>
                                     <option value="">Select Car</option>
                                 </select>
 	                        </div>
@@ -74,7 +83,7 @@
 	                          	<label for="year_of_manufacturer" class="col-form-label" style="font-weight: bold;">  Year of Manufacturer:
                                 </label>
 	                            {{-- <input class="form-control" type="text" name="year_of_manufacturer" required placeholder="Write Year of Manufacturer" value="{{old('year_of_manufacturer')}}"> --}}
-                                <select name="year_of_manufacturer" id="" class="form-control">
+                                <select name="year_of_manufacturer" id="" class="form-control" required>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -100,13 +109,13 @@
 
                             <div class="col-sm-4 mb-4 ">
 	                          	<label for="transmission" class="col-form-label" style="font-weight: bold;"> Transmission</label>
-	                            <input class="form-control" type="text" name="transmission" required placeholder="Write Transmission" value="{{old('transmission')}}">
+	                            <input class="form-control" required type="text" name="transmission" required placeholder="Write Transmission" value="{{old('transmission')}}">
 	                        </div>
                             <div class="col-sm-4 mb-4 ">
 	                          	<label for="manufacturer" class="col-form-label"  style="font-weight: bold;">  Fuel Type:
                                 </label>
 	                            {{-- <input class="form-control" type="text" name="fuel_type" required placeholder="Write Fuel Type" value="{{old('fuel_type')}}"> --}}
-                                <select name="fuel_type" id="" class="form-control">
+                                <select name="fuel_type" id="" class="form-control" required>
                                     <option value="Octane">Octane</option>
                                     <option value="Petrol">Petrol</option>
                                     <option value="Diesel">Diesel</option>
@@ -120,24 +129,24 @@
                             <div class="col-sm-4 mb-4 ">
 	                          	<label for="year_of_manufacturer" class="col-form-label"  style="font-weight: bold;"> Drive Train:
                                 </label>
-	                            <input class="form-control" type="text" name="drive_train" required placeholder="Write Drive Train" value="{{old('drive_train')}}">
+	                            <input class="form-control" required type="text" name="drive_train" required placeholder="Write Drive Train" value="{{old('drive_train')}}">
 	                        </div>
 
 
                             <div class="col-sm-4 mb-4 ">
 	                          	<label for="transmission" class="col-form-label" style="font-weight: bold;"> Mileage(km):</label>
-	                            <input class="form-control" type="text" name="mileage" required placeholder="Write Mileage(km)" value="{{old('mileage')}}">
+	                            <input class="form-control"  type="text" name="mileage" required placeholder="Write Mileage(km)" value="{{old('mileage')}}">
 	                        </div>
                             <div class="col-sm-4 mb-4 ">
 	                          	<label for="manufacturer" class="col-form-label" style="font-weight: bold;"> Body Type:
                                 </label>
-	                            <input class="form-control" type="text" name="body_type" required placeholder="Write  Body Type" value="{{old('body_type')}}">
+	                            <input class="form-control"  type="text" name="body_type" required placeholder="Write  Body Type" value="{{old('body_type')}}">
 	                        </div>
                             <div class="col-sm-4 mb-4 ">
-	                          	<label for="year_of_manufacturer" class="col-form-label" style="font-weight: bold;">  Exterior Color:
+	                          	<label for="year_of_manufacturer"  class="col-form-label" style="font-weight: bold;">  Exterior Color:
 
                                 </label>
-	                            <input class="form-control" type="text" name="exterior_color" required placeholder="Write Exterior Color:" value="{{old('exterior_color')}}">
+	                            <input class="form-control"  type="text" name="exterior_color" required placeholder="Write Exterior Color:" value="{{old('exterior_color')}}">
 	                        </div>
 
 	                       <div class="mb-2 col-sm-12">
@@ -180,7 +189,7 @@
 <script>
     $(document).ready(function(){
         $('#brandSelect').on('click', function(){
-            
+
             var brand_id = $(this).val();
             if(brand_id){
                 $.ajax({

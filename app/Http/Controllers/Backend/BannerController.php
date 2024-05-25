@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Banner;
+use App\Models\Category;
 use App\Models\Brand;
 use Image;
 use Session;
@@ -29,7 +30,9 @@ class BannerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $data['brands'] = Brand::latest()->get();
+    {
+        $data['brands'] = Brand::latest()->get();
+        $data['categories'] = Category::latest()->get();
         return view('backend.banner.create',$data);
     }
 
@@ -76,6 +79,7 @@ class BannerController extends Controller
         }
         $banner->manufacturer = $request->manufacturer;
         $banner->model = $request->model;
+        $banner->category = $request->category;
         $banner->engine = $request->engine;
         $banner->price = $request->price;
         $banner->year_of_manufacturer = $request->year_of_manufacturer;
@@ -117,7 +121,8 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail($id);
         $brands = Brand::latest()->get();
-    	return view('backend.banner.edit',compact('banner','brands'));
+        $categories = Category::latest()->get();
+    	return view('backend.banner.edit',compact('banner','brands','categories'));
     }
 
     /**
@@ -171,6 +176,7 @@ class BannerController extends Controller
         $banner->status = $request->status;
         $banner->manufacturer = $request->manufacturer;
         $banner->model = $request->model;
+        $banner->category = $request->category;
         $banner->engine = $request->engine;
         $banner->price = $request->price;
         $banner->year_of_manufacturer = $request->year_of_manufacturer;
